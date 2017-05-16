@@ -6,6 +6,9 @@
 		<link rel="stylesheet" href="../css/reset.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../css/style.css">
+		<!--追加-->
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+		<script type="text/javascript" src="subject.js"></script>
 	</head>
 	<body>
 		<!--ヘッダー-->
@@ -30,7 +33,7 @@
 					<label for="subject__content">議事内容</label>
 					<textarea name="subject__content" id="subject__content" cols="30" rows="10" class="form-control">議事内容は賛成・反対で答えられる内容で記載願います。</textarea>
 				</div>
-				<input type="submit" class="btn btn-default" value="作成" data-disable-with="作成中..." name="commit">
+				<input type="submit" class="btn btn-default" value="作成" data-disable-with="作成中..." name="commit" onclick="regist()">
 			</form>
 		</div>
 
