@@ -7,9 +7,10 @@ var user_name;
 //議案の登録
 function regist() {
 	url = url_host + "chaincode";
+	var number = $("#subject__no").val();
 	var subject = $("#subject__title").val();
 	var content = $("#subject__content").val();
-	var sub = [subject, content];
+	var sub = [number, subject, content];
 
 	var JSONdata = createJSONdataForShareApp("invoke","regist", sub, 1);
 	console.log(JSON.stringify(JSONdata)); //値をテスト確認
