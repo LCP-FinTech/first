@@ -11,10 +11,10 @@ type SubjectChaincode struct {
 }
 
 // 議案(subject)と内容(content)
-/*type Subject struct {
+type Subject struct {
 	Subject string `json:"subject"`
 	Content string `json:"content"`
-}*/
+}
 
 // 初期処理(なし)
 func (cc *SubjectChaincode) Init(stub *shim.ChaincodeStub, function string, args []string) ([]byte, error) {
@@ -45,7 +45,6 @@ func (cc *SubjectChaincode) Query(stub *shim.ChaincodeStub, function string, arg
 
 // 登録を実行
 func (cc *SubjectChaincode) regist(stub *shim.ChaincodeStub, args []string) ([]byte, error) {
-	var key, value string
 	var err error
 
 	if len(args) != 2 {
@@ -53,9 +52,12 @@ func (cc *SubjectChaincode) regist(stub *shim.ChaincodeStub, args []string) ([]b
 	}
 
 	// ワールドステートに追加
-	key = args[0]
-	value = args[1]
-	err = stub.PutState(key, []byte(value))
+	key := args[0]
+	value := Subject{}
+	value.Subject = args[1]
+	value.Content = args[2]
+	valueJson, _ = json.Marshal(value)
+	err = stub.PutState(key, valueJson)
 	if err != nil {
 		return nil, err
 	}
